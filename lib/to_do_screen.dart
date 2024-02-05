@@ -1,4 +1,6 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:to_do_flutter/to_do_model.dart';
 
 class ToDoScreen extends StatefulWidget {
   const ToDoScreen({super.key});
@@ -9,6 +11,7 @@ class ToDoScreen extends StatefulWidget {
 
 class _ToDoScreenState extends State<ToDoScreen> {
   var list = <String>["Testing"];
+  DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
 
   _showPopUpDialog({int position = -1}) {
     var textFieldController = TextEditingController();
@@ -38,6 +41,9 @@ class _ToDoScreenState extends State<ToDoScreen> {
                       } else if (position > -1) {
                         list[position] = textFieldController.text.toString();
                       } else {
+                        var toDoModel =
+                            ToDoModel(textFieldController.text.toString());
+
                         list.add(textFieldController.text.toString());
                       }
                       setState(() {});

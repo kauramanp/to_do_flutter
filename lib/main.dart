@@ -1,7 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_flutter/to_do_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: FirebaseOptions(
+    apiKey: "AIzaSyAzsOIBIgUApDextBcoJrGqEbqLtHmdF0Q",
+    appId: "1:685575620011:android:2b3afd80360d4d394dbeee",
+    messagingSenderId: "685575620011",
+    projectId: "steel-earth-260407",
+    databaseURL:
+        'https://steel-earth-260407.firebasedatabase.app', // IMPORTANT!
+  ));
   runApp(const MyApp());
 }
 
